@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document中文</title>
+    <link rel="stylesheet" href="./css/index.css"/>
+</head>
+<body>
+行：<input type="text" class="rows"/><br>
+列：<input type="text" class="cols"/><br>
+<div class="sc">生成</div>
+    <div class="container">
+        <div class="stones clear"></div>
+        <div class="fgs clear"></div>
+    </div>
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/wuziqi.js"></script>
+<script>
+    $().ready(function(){
+        $('.sc').click(function(){
+            wzq.init();
+        });
+    });
+</script>
+</body>
+</html>
