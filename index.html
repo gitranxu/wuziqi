@@ -6,10 +6,15 @@
     <link rel="stylesheet" href="./css/index.css"/>
 </head>
 <body>
-行：<input type="text" class="rows"/><br>
-列：<input type="text" class="cols"/><br>
-<div class="sc">生成</div>
+
     <div class="container">
+        <div class="btns">
+            <div class="sc">开始</div>
+            <div class="tj">
+                行：<input type="text" class="rows"/><br>
+                列：<input type="text" class="cols"/><br>
+            </div>
+        </div>
         <div class="stones clear"></div>
         <div class="fgs clear"></div>
     </div>
@@ -17,6 +22,7 @@
     <script src="./js/wuziqi.js"></script>
 <script>
     $().ready(function(){
+        wzq.init();
         $('.sc').click(function(){
             wzq.init();
         });

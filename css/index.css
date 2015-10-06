@@ -1,20 +1,23 @@
 *{padding:0;margin:0;}
-body{background:grey;}
+body{background:mediumslateblue;}
 .clear{zoom:1;}
 .clear:after{content:"";display:block;clear:both;}
 ul{list-style: none;}
 
-.container{margin:10px auto;position:relative;width:100px;}
+.container{margin:70px auto;position:relative;width:100px;}
 .stones{ position: absolute;top:0;left:0;z-index: 1;}
-.stone{width:38px;height:38px;border:1px solid #aa3388;
+.stone{width:38px;height:38px;border:1px solid lightskyblue;
     float: left;}
 .fgs{position:absolute;top:-10px;left:-10px;z-index:3;}
-.fg{width:18px;height:18px;margin-right:20px;margin-bottom:20px;
-    border:1px solid yellowgreen;float:left;cursor:pointer;}
-.black{width:18px;height:18px;background:black;border-radius:50%;cursor:default;}
-.white{width:18px;height:18px;background:white;border-radius:50%;cursor:default;}
+.fg{width:20px;height:20px;margin-right:20px;margin-bottom:20px;
+    float:left;cursor:pointer;}
+.black{width:20px;height:20px;background:black;border-radius:50%;cursor:default;}
+.white{width:20px;height:20px;background:white;border-radius:50%;cursor:default;}
 
 
-
-.sc{width:100px;height:70px;line-height: 70px;text-align: center;
-background: #ff85ea;color:#fff;border-radius: 4px;cursor:pointer;}
+.btns{position:absolute;top:-50px;right:0px;width:100%;height:50px;}
+.sc{width:60px;height:40px;line-height: 40px;text-align: center;
+background: #ff85ea;color:#fff;border-radius: 4px;cursor:pointer;
+    position:absolute;top:0px;left:84px;z-index: 2;}
+.tj{position:absolute;top:0px;left:0px;z-index: 1;}
+.tj input{width:40px;border:none;background:lightskyblue;padding:2px 4px;border-radius: 4px;}

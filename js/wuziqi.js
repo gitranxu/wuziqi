@@ -6,9 +6,8 @@ $().ready(function(){
         init : function(){
             //  根据行列生成舞台
             i_now = 0;
-            var rows = $('.rows').val() || 4;
-            var cols = $('.cols').val() || 4;
-            //$('.stones').width(40*rows);
+            var rows = $('.rows').val() || 12;
+            var cols = $('.cols').val() || 12;
             var html = "";
             for(var i = 0;i < rows;i++){
                 for(var j = 0;j < cols;j++){
@@ -16,18 +15,7 @@ $().ready(function(){
                 }
             }
             $('.stones').empty().width(40*cols).append(html);
-            /*var $stone = $('.stone');
-            for(var i = rows * cols-1;i > 0;i--){
-                var $item = $stone.eq(i);
-                var left = $item.position().left;
-                var top = $item.position().top;
-                console.log(left+'---'+top);
-                $item.css({
-                    position:'absolute',
-                    left:left,
-                    top:top
-                });
-            }*/
+
             var fg_html = '';
             var fg_rows = rows - 0 + 1;
             var fg_cols = cols - 0 + 1;
@@ -37,7 +25,7 @@ $().ready(function(){
                 }
             }
             $('.fgs').empty().width(40*fg_cols).append(fg_html);
-            $('.container').width(40*fg_cols);
+            $('.container').width(40*cols).height(40*rows+10);
         },
         bind : function(){
             var _this = this;
@@ -57,52 +45,23 @@ $().ready(function(){
                 i_now++;
 
                 if(_this.fn.is_ok($(this),fgcolor)){
-                   alert('成功，游戏结束！');
+                   alert('game over!');
                 }
             });
         },
         fn : {
             //fgcolor当前棋子颜色
             is_ok : function($fg,fgcolor){
-                //成功条件，依次判断上下，左右，斜上斜下四个方向，只要有一个方向有4个跟当前同色的连一起，游戏
-                //成功
-                //console.log('begin----');
-                i_success = 0;
-                this.direct_num($fg,fgcolor,'up');
-                this.direct_num($fg,fgcolor,'down');
-                console.log(i_success+'------a');
-                if(i_success==4){//五子棋条件
-                    console.log('成功，游戏结束');
-                    return true;
+                //成功条件，依次判断上下，左右，斜上斜下四个方向，只要有一个方向有4个跟当前同色的连一起，游戏成功结束
+                var a_query = [{z:'up',f:'down'},{z:'left',f:'right'},{z:'leftup',f:'rightdown'},{z:'rightup',f:'leftdown'}];
+                for(var i = 0,j = a_query.length;i < j;i++){
+                    i_success = 0;
+                    this.direct_num($fg,fgcolor,a_query[i].z);
+                    this.direct_num($fg,fgcolor,a_query[i].f);
+                    if(i_success==4){
+                        return true;
+                    }
                 }
-
-                i_success = 0;
-                this.direct_num($fg,fgcolor,'left');
-                this.direct_num($fg,fgcolor,'right');
-                console.log(i_success+'------b');
-                if(i_success==4){//五子棋条件
-                    console.log('成功，游戏结束');
-                    return true;
-                }
-
-                i_success = 0;
-                this.direct_num($fg,fgcolor,'leftup');
-                this.direct_num($fg,fgcolor,'rightdown');
-                console.log(i_success+'------b');
-                if(i_success==4){//五子棋条件
-                    console.log('成功，游戏结束');
-                    return true;
-                }
-
-                i_success = 0;
-                this.direct_num($fg,fgcolor,'leftdown');
-                this.direct_num($fg,fgcolor,'rightup');
-                console.log(i_success+'------b');
-                if(i_success==4){//五子棋条件
-                    console.log('成功，游戏结束');
-                    return true;
-                }
-
                 return false;
             },
             direct_num : function($fg,fgcolor,direct){
@@ -140,6 +99,4 @@ $().ready(function(){
         wuziqi.init();
         wuziqi.bind();
     };
-
-
 });
